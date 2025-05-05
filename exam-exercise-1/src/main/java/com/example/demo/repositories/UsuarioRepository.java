@@ -5,4 +5,5 @@ import com.example.demo.entities.Usuario;
 
 public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
 
+	Usuario findByUsername(String username);
 }

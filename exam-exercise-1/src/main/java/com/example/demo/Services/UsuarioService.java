@@ -15,13 +15,18 @@ public class UsuarioService {
     private UsuarioRepository repository;
 
     // Create or update a Usuario
-    public Usuario save(Usuario usuario) {
+    public Usuario post(Usuario usuario) {
         return repository.save(usuario);
     }
 
     // Read a Usuario by ID
-    public Usuario findById(Integer id) {
+    public Usuario getId(Integer id) {
         return repository.findById(id).orElse(null);
+    }
+    
+ // Read a Usuario by Username
+    public Usuario getUserName(String username) {
+        return repository.findByUsername(username);
     }
 
     // Read all Usuarios

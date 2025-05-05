@@ -9,6 +9,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.JoinColumn;
 import lombok.AllArgsConstructor;
@@ -30,8 +31,12 @@ public class Manga {
 	
 	private Date fechaLanzamiento;
 	
+	@ManyToOne
+	@JoinColumn(name = "pais_id")
 	private Pais pais;
 	
+	@ManyToOne
+	@JoinColumn(name = "tipo_id")
 	private Tipo tipo;
 	
 	private int anime;

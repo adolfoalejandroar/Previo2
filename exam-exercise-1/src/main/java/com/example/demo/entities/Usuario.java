@@ -33,6 +33,6 @@ public class Usuario {
 	
 	private String password;
 	
-	@ManyToMany(mappedBy = "usuariosFavoritos")
+	@ManyToMany(mappedBy = "usuarios")
 	private List<Manga> mangasFavoritos;
 }
