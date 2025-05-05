@@ -50,4 +50,10 @@ public class UsuarioController {
 		usuarioServ.addFavorito(username, manga.getId());
 		usuarioServ.post(usuarioServ.getUserName(username));
 	}
+	
+	@PostMapping("/usuarios/{username}/favoritos/{mangaId}")
+	public void post(@PathVariable String username, @PathVariable int mangaId) {
+		usuarioServ.addFavorito(username, mangaId);
+		usuarioServ.post(usuarioServ.getUserName(username));
+	}
 }
