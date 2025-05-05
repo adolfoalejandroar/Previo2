@@ -38,4 +38,8 @@ public class UsuarioService {
     public void deleteById(Integer id) {
         repository.deleteById(id);
     }
+    
+    public void deleteMangaFavorito(String username, int mangaId) {
+		// repository.deleteMangaFavorito(username, mangaId);
+	}
 }

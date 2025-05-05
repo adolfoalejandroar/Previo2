@@ -1,5 +1,6 @@
 package com.example.demo.Controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,8 +16,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
+import com.example.demo.Services.MangaService;
 import com.example.demo.Services.UsuarioService;
 import com.example.demo.entities.Manga;
+import com.example.demo.transfers.SimpleManga;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
@@ -31,9 +34,20 @@ public class UsuarioController {
 	// ##########################################################
 
 	@GetMapping("/{username}/favoritos")
-	public List<Manga> get(@PathVariable String username) {
-		return usuarioServ.getUserName(username).getMangasFavoritos();
+	public List<SimpleManga> get(@PathVariable String username) {
+		List<Manga> mangas = usuarioServ.getUserName(username).getMangasFavoritos();
+		List<SimpleManga> simpleMangas = new ArrayList<>();
+		for (Manga manga : mangas) {
+			SimpleManga simpleManga = new SimpleManga(manga);
+			simpleMangas.add(simpleManga);
+		}
+		return simpleMangas;
 		
+	}
+	
+	@DeleteMapping("/usuarios/{username}/favoritos/{mangaId}")
+	public void delete(@PathVariable String username, @PathVariable int mangaId) {
+		// usuarioServ.deleteMangaFavorito(username, mangaId);
 	}
 
 	/*@GetMapping("/list/{id}")
@@ -61,10 +75,7 @@ public class UsuarioController {
 	// DELETE Methods
 	// ############################################################
 
-	@DeleteMapping("/del/{id}")
-	public void delete(@PathVariable int id) {
-		usuarioServ.delete(id);
-	}
+	
 
 	// ----------------------------------------------------------
 
