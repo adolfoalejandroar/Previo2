@@ -39,11 +39,13 @@ public class Manga {
 	@JoinColumn(name = "tipo_id")
 	private Tipo tipo;
 	
-	private int anime;
+	private Integer anime;
 	
-	private int juego;
+	private Integer juego;
 	
-	private int pelicula;
+	private Integer pelicula;
+	
+	private Integer temporadas;
 	
 	@ManyToMany
 	@JoinTable(name = "favorito",
